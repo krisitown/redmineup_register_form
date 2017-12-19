@@ -1,0 +1,91 @@
+<!-- jquery and bootstrap -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+<!-- cdn links end -->
+
+<div class="col-md-12">
+    <img src="ru_logo_color.png" class="img-responsive col-md-8 col-md-offset-* "/>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="" />
+    </div>
+    <div class="col-md-6">
+    <form id="registerForm">
+        <div class="form-group">
+            <input type="text" placeholder="Domain Name" required id="domainName" />.redmineup.com
+        </div>
+
+        <div class="form-group">
+            <label>Please select your plan</label></br>
+            <select id="tariff">
+                <option value="small">Small (5 users) </option>
+                <option value="medium">Medium (25 Users) </option>
+                <option value="bussiness">Business (100 Users) </option>
+                <option value="enterprise">Enterprise (Unlimited Users) </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="First name" required id="firstName" />
+            <input type="text" placeholder="Last name" required id="lastName" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="Email address" required id="email" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="Telephone number" required id="contact_phone" />
+        </div>
+
+        <div class="form-group">
+            <label>What exactly we can help you with?</label></br>
+            <select id="reason">
+                <option>Project management</option>
+                <option>Customer support (Helpdesk)</option>
+                <option>Sales & Marketing (CRM)</option>
+                <option>E-commerce management (Finance & Invoicing)</option>
+                <option>Software development (Agile)</option>
+                <option>Human resources management (People)</option>
+                <option>Launch a Startup (I need all of these)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>What do you prefer to use after trail?</label></br>
+            <input type="radio" name="service_type" value="cloud" required /> Cloud
+            <input type="radio" name="service_type" value="self_hosted" required/> Self-hosted
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create my account" id="submitForm"/>
+        </div>
+    </form>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#registerForm').submit(function(event){
+        event.preventDefault();
+        let formData = {
+            name:  $('#domainName').val(),
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            email: $('#email').val(),
+            tariff: $('#tariff').val(),
+            contact_phone: $('#contact_phone').val(),
+            service: $('input[name=service_type]:checked').val(),
+            reason: $('#reason').val()
+        }
+        console.log(formData);
+    });
+});
+</script>
