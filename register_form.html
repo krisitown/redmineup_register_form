@@ -23,6 +23,7 @@
     </div>
     <div class="col-md-6">
     <form id="registerForm">
+        <div id="errors" class="alert alert-danger" hidden></div>
         <div class="form-group">
             <input type="text" placeholder="Domain Name" required id="domainName" />.redmineup.com
         </div>
@@ -52,7 +53,7 @@
 
         <div class="form-group">
             <label>What exactly we can help you with?</label></br>
-            <select id="reason">
+            <select id="goal">
                 <option>Project management</option>
                 <option>Customer support (Helpdesk)</option>
                 <option>Sales & Marketing (CRM)</option>
@@ -82,15 +83,31 @@ $(document).ready(function(){
         event.preventDefault();
         let formData = {
             name:  $('#domainName').val(),
-            firstName: $('#firstName').val(),
-            lastName: $('#lastName').val(),
+            firstname: $('#firstName').val(),
+            lastname: $('#lastName').val(),
             email: $('#email').val(),
             tariff: $('#tariff').val(),
             contact_phone: $('#contact_phone').val(),
             service: $('input[name=service_type]:checked').val(),
-            reason: $('#reason').val()
+            goal: $('#goal').val()
         }
-        console.log(formData);
+        
+        $.ajax({
+            method: "post",
+            data: formData,
+            url: 'http://localhost:3000/saas/register.json/',
+            crossDomain: true,
+            success: function(data){
+                if(data.success){
+                    //todo: show success page
+                    console.log(data);
+                } else {
+                    console.log(data.errors);
+                    $('#errors').html(data.errors);
+                    $('#errors').show()
+                }
+            }
+        })
     });
 });
 
