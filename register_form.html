@@ -33,7 +33,7 @@
             <select id="tariff">
                 <option value="small">Small (5 users) </option>
                 <option value="medium">Medium (25 Users) </option>
-                <option value="bussiness">Business (100 Users) </option>
+                <option value="business">Business (100 Users) </option>
                 <option value="enterprise">Enterprise (Unlimited Users) </option>
             </select>
         </div>
@@ -54,13 +54,13 @@
         <div class="form-group">
             <label>What exactly we can help you with?</label></br>
             <select id="goal">
-                <option>Project management</option>
-                <option>Customer support (Helpdesk)</option>
-                <option>Sales & Marketing (CRM)</option>
-                <option>E-commerce management (Finance & Invoicing)</option>
-                <option>Software development (Agile)</option>
-                <option>Human resources management (People)</option>
-                <option>Launch a Startup (I need all of these)</option>
+                <option value="project_management">Project management</option>
+                <option value="customer_support">Customer support (Helpdesk)</option>
+                <option value="crm">Sales & Marketing (CRM)</option>
+                <option value="ecommerce_management">E-commerce management (Finance & Invoicing)</option>
+                <option value="software_development">Software development (Agile)</option>
+                <option value="hr_management">Human resources management (People)</option>
+                <option value="everything">Launch a Startup (I need all of these)</option>
             </select>
         </div>
 
@@ -102,7 +102,7 @@ $(document).ready(function(){
         $.ajax({
             method: "post",
             data: formData,
-            url: 'https://localhost:3000/saas/register.json/',
+            url: 'http://localhost:3000/saas/register.json',
             crossDomain: true,
             success: function(data){
                 if(data.success){
