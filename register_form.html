@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-6">
     <form id="registerForm">
-        <div id="errors" class="alert alert-danger" hidden></div>
+        <div id="errors" class="alert alert-danger"></div>
         <div class="form-group">
             <input type="text" placeholder="Domain Name" required id="domainName" />.redmineup.com
         </div>
@@ -74,11 +74,18 @@
             <input type="submit" value="Create my account" id="submitForm"/>
         </div>
     </form>
+    <div id="success">
+        <img src="check.png" class="img-responsive col-md-8 col-md-offset-* "/>
+        <h4>Well done, check your inbox</h4>
+        <span>Your instance will be ready in 1 minute. Have a nice trail :)</span>
+    </div>
     </div>
 </div>
 
 <script>
 $(document).ready(function(){
+    $('#success').hide()
+    $('#errors').hide()
     $('#registerForm').submit(function(event){
         event.preventDefault();
         let formData = {
@@ -95,17 +102,26 @@ $(document).ready(function(){
         $.ajax({
             method: "post",
             data: formData,
-            url: 'http://localhost:3000/saas/register.json/',
+            url: 'https://localhost:3000/saas/register.json/',
             crossDomain: true,
             success: function(data){
                 if(data.success){
-                    //todo: show success page
+                    $('#registerForm').hide()
+                    $('#success').show()
                     console.log(data);
                 } else {
                     console.log(data.errors);
-                    $('#errors').html(data.errors);
+                    let errorMessage = '';
+                    for(let i = 0; i < data.errors.length; i++){
+                        errorMessage += data.errors[i] + '\n';
+                    }
+                    $('#errors').html(errorMessage);
                     $('#errors').show()
                 }
+            },
+            error: function(data){
+                console.log('error!')
+                console.log(data)
             }
         })
     });
