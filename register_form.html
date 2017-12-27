@@ -22,13 +22,13 @@
 
 <div class="row">
     <div class="col-md-6">
-        <img src="" />
+        <img src="scrum_meeting_agile.png" />
     </div>
     <div class="col-md-6">
     <form id="registerForm">
         <div id="errors" class="alert alert-danger"></div>
         <div class="form-group">
-            <input type="text" placeholder="Domain Name" required id="domainName" />.redmineup.com
+            <input type="text" placeholder="Domain Name" required id="web" />.redmineup.com
         </div>
 
         <div class="form-group">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Create my account" id="submitForm"/>
+            <input class="btn btn-primary" type="submit" value="Create my account" id="submitForm"/>
         </div>
     </form>
     <div id="success">
@@ -91,8 +91,11 @@ $(document).ready(function(){
     $('#errors').hide()
     $('#registerForm').submit(function(event){
         event.preventDefault();
+
+        $('.invalidField').removeClass('invalidField');
+
         let formData = {
-            name:  $('#domainName').val(),
+            name:  $('#web').val(),
             firstname: $('#firstName').val(),
             lastname: $('#lastName').val(),
             email: $('#email').val(),
@@ -105,7 +108,7 @@ $(document).ready(function(){
         $.ajax({
             method: "post",
             data: formData,
-            url: 'http://localhost:3000/saas/register.json',
+            url: 'https://admin.redmineup.com/saas/register.json',
             crossDomain: true,
             success: function(data){
                 if(data.success){
@@ -117,6 +120,8 @@ $(document).ready(function(){
                     let errorMessage = '';
                     for(let i = 0; i < data.errors.length; i++){
                         errorMessage += data.errors[i] + '\n';
+                        errorFieldSelector = '#' + data.errors[i].split(' ')[0].toLowerCase();
+                        $(errorFieldSelector).addClass('invalidField');
                     }
                     $('#errors').html(errorMessage);
                     $('#errors').show()
@@ -129,15 +134,15 @@ $(document).ready(function(){
         })
     });
 });
-
-$('#submitForm').validate({
-    errorElement: 'span',
-    errorPlacement: function(error, element){
-        $(element).addClass('alert alert-danger');
+$('#registerForm').validate({
+    errorPlacement: function(error,element) {
+        return true;
     }
-})
+});
+
 $('#submitForm').prop('disabled', !$('#registerForm').valid());
 $('#registerForm input').on('change', function(){
+    $(this).removeClass('invalidField');
     $('#submitForm').prop('disabled', !$('#registerForm').valid());
 })
 </script>

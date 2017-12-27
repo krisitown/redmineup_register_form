@@ -1,7 +1,11 @@
+.invalidField {
+    color: #FF0000;
+}
+/*
 .error {
     color:#FF0000; 
 }
-/*
+
 .valid {
     color:#00CC00;
 }
