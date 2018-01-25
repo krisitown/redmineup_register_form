@@ -1,94 +1,136 @@
-<!-- jquery and bootstrap -->
-
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
 
 <!-- validation framework -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js"></script>
 
-<!-- bootstrap css -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<section class="gray-bg logo pad-vert-small">
+  <div class="content align-center">
+    <a href="/">{{':logo_with_name.png' | thumbnail_tag: 'size:250'}}</a>
+  </div>
+</section>
 
-<!-- cdn links end -->
+<section class="gray-bg registration-form">
+  <div class="content pad-bottom-none border-all border-radius-small" style="overflow:hidden">
+    <div class="grid-2-at-medium gap-none">
+      <div class="column gap-none gray-blue-bg align-center">
+        {{'cloud_all_in_one:pm.png' | thumbnail_tag: 'size:498', 'class:pad-vert-medium' }}
+        <h4 class="color pad-bottom-none">Get started with&nbsp;<b>RedmineUP</b></h4>
+        <!-- <h4 class="base-color pad-bottom-small">Whether you are a developer, a software architect, a scrum-master, a QA, a customer support champion, or anyone else in need of a powerful collaboration tool for your work — RedmineUP is the ideal solution.</h4> -->
+        <p class="color pad-bottom-small">You're signing up for our Cloud option, hosted by us.</p>
+        <!-- <h6 class="base-color pad-bottom-small">Whether you are a developer, a software architect, a scrum-master, a QA, a customer support champion, or anyone else in need of a powerful collaboration tool for your work — RedmineUP is the ideal solution.</h6> -->
+      </div>
+      <div class="column gap-none white-bg">
+        <div id="errors" class="message-banner red-bg">
+          <div class="content pad-vert-small">          
+            <div class="message-text"></div>
+          </div>
+          <a class="close-message" onclick="$('#errors').addClass('hide');">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" class="image">
+            <path fill="#ffffff" d="M11.4,10l6.3-6.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0L10,8.6L3.7,2.3c-0.4-0.4-1-0.4-1.4,0 s-0.4,1,0,1.4L8.6,10l-6.3,6.3c-0.4,0.4-0.4,1,0,1.4s1,0.4,1.4,0l6.3-6.3l6.3,6.3c0.4,0.4,1,0.4,1.4,0s0.4-1,0-1.4L11.4,10z"></path>
+            <g opacity="0.1">
+              <path d="M17,2c0.3,0,0.5,0.1,0.7,0.3c0.4,0.4,0.4,1,0,1.4L11.4,10l6.3,6.3c0.4,0.4,0.4,1,0,1.4 C17.5,17.9,17.3,18,17,18c-0.3,0-0.5-0.1-0.7-0.3L10,11.4l-6.3,6.3C3.5,17.9,3.3,18,3,18s-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4 L8.6,10L2.3,3.7c-0.4-0.4-0.4-1,0-1.4C2.5,2.1,2.7,2,3,2s0.5,0.1,0.7,0.3L10,8.6l6.3-6.3C16.5,2.1,16.7,2,17,2 M17,1 c-0.5,0-1,0.2-1.4,0.6L10,7.2L4.4,1.6C4,1.2,3.5,1,3,1S2,1.2,1.6,1.6c-0.8,0.8-0.8,2,0,2.8L7.2,10l-5.6,5.6c-0.8,0.8-0.8,2,0,2.8 C2,18.8,2.5,19,3,19s1-0.2,1.4-0.6l5.6-5.6l5.6,5.6C16,18.8,16.5,19,17,19c0.5,0,1-0.2,1.4-0.6c0.8-0.8,0.8-2,0-2.8L12.8,10l5.6-5.6 c0.8-0.8,0.8-2,0-2.8C18,1.2,17.5,1,17,1L17,1z"></path>
+            </g>
+          </svg>
+        </a>
+        </div>
+        
+        <form id="registerForm" class="grid-1 content-width-small pad-top-medium pad-bottom-small">
+          <div class="form-item">
+            <div class="append">
+                <input type="text" placeholder="Domain Name" required id="web"><span>.redmineup.com</span>
+            </div>            
+          </div>
 
-<!-- stylesheet link -->
-<link rel="stylesheet" href="register_form.css">
+          <div class="form-item">
+              <label>Select your plan</label>
+              <select id="tariff">
+                  <option value="small">Small (5 users) </option>
+                  <option value="medium" selected="selected">Medium (25 Users) </option>
+                  <option value="business">Business (100 Users) </option>
+                  <option value="enterprise">Enterprise (Unlimited Users) </option>
+              </select>
+          </div>
 
-<div class="col-md-12">
-    <img src="ru_logo_color.png" class="img-responsive col-md-8 col-md-offset-* "/>
-</div>
+          <div class="form-item">
+            <label>Please enter your name</label>
+            <div class="grid-2">
+            <div class="gap-none"><input type="text" placeholder="First name" required id="firstName"></div>
+            <div class="gap-none"><input type="text" placeholder="Last name" required id="lastName"></div>
+            </div>
+            
+            
+          </div>
+          <div class="form-item">
+          </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <img src="scrum_meeting_agile.png" />
+          <div class="form-item">
+              <input type="email" placeholder="Email address" required id="email" />
+          </div>
+
+          <div class="form-item">
+              <input type="text" placeholder="Phone number" required id="contact_phone" />
+          </div>
+
+          <div class="form-item">
+              <label>What exactly we can help you with?</label>
+              <select id="goal" required>
+                  <option value="">Select your target for the trial</option>
+                  <option value="project_management">Project management</option>
+                  <option value="customer_support">Customer support (Helpdesk)</option>
+                  <option value="crm">Sales & Marketing (CRM)</option>
+                  <option value="ecommerce_management">E-commerce management (Finance & Invoicing)</option>
+                  <option value="software_development">Software development (Agile)</option>
+                  <option value="hr_management">Human resources management (People)</option>
+                  <option value="everything">Launch a Startup (I need all of these)</option>
+              </select>
+          </div>
+
+          <div class="form-item">
+              <label>What do you prefer to use after trial?</label>
+              <div class="btn-group">
+                <input type="radio" name="service_type" value="cloud" required id="cloud_use"> 
+                <label class="align-center position-relative" for="cloud_use">
+                  <div class="image pad-horz-base pin-middle-left">
+                    <svg width="32" height="40" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:10;fill: none;stroke: #a9a9a9;stroke-width: 2px;"><g id="Layer-1"><path d="M39.167,22.5c0,-4.662 -3.85,-8.497 -8.634,-8.318c-1.87,-3.945 -5.878,-6.682 -10.533,-6.682c-6.21,0 -11.27,4.85 -11.632,10.965c-3.888,-0.81 -7.535,2.15 -7.535,6.118c0,6.35 6.667,6.25 6.667,6.25l24.167,0c0,0 7.5,-0.976 7.5,-8.333Z"></path></g></svg>            
+                  </div>                  
+                  Cloud
+                </label>  
+                <input type="radio" name="service_type" value="self_hosted" id="self_hosted_use"> 
+                <label class="align-center position-relative" for="self_hosted_use">
+                  <div class="image pad-horz-base pin-middle-left">
+                    <svg width="32" height="40" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule: evenodd;clip-rule: evenodd;stroke-linejoin: round;stroke-miterlimit: 10;fill: none;stroke: #a9a9a9;stroke-width: 2px;"><g id="Layer-1"><rect x="5.833" y="15.833" width="28.333" height="8.333"></rect><rect x="5.833" y="7.5" width="28.333" height="8.333"></rect><rect x="5.833" y="24.167" width="28.333" height="8.333"></rect><path d="M11.667,18.333c0.92,0 1.666,0.747 1.666,1.667c0,0.92 -0.746,1.667 -1.666,1.667c-0.92,0 -1.667,-0.747 -1.667,-1.667c0,-0.92 0.747,-1.667 1.667,-1.667Z"></path><path d="M11.667,10c0.92,0 1.666,0.747 1.666,1.667c0,0.92 -0.746,1.666 -1.666,1.666c-0.92,0 -1.667,-0.746 -1.667,-1.666c0,-0.92 0.747,-1.667 1.667,-1.667Z"></path><path d="M28.333,19.167c0.46,0 0.834,0.373 0.834,0.833c0,0.46 -0.374,0.833 -0.834,0.833c-0.46,0 -0.833,-0.373 -0.833,-0.833c0,-0.46 0.373,-0.833 0.833,-0.833Z"></path><path d="M28.333,10.833c0.46,0 0.834,0.374 0.834,0.834c0,0.46 -0.374,0.833 -0.834,0.833c-0.46,0 -0.833,-0.373 -0.833,-0.833c0,-0.46 0.373,-0.834 0.833,-0.834Z"></path><path d="M23.333,19.167c0.46,0 0.834,0.373 0.834,0.833c0,0.46 -0.374,0.833 -0.834,0.833c-0.46,0 -0.833,-0.373 -0.833,-0.833c0,-0.46 0.373,-0.833 0.833,-0.833Z"></path><path d="M23.333,10.833c0.46,0 0.834,0.374 0.834,0.834c0,0.46 -0.374,0.833 -0.834,0.833c-0.46,0 -0.833,-0.373 -0.833,-0.833c0,-0.46 0.373,-0.834 0.833,-0.834Z"></path><path d="M11.667,26.667c0.92,0 1.666,0.746 1.666,1.666c0,0.92 -0.746,1.667 -1.666,1.667c-0.92,0 -1.667,-0.747 -1.667,-1.667c0,-0.92 0.747,-1.666 1.667,-1.666Z"></path><path d="M28.333,27.5c0.46,0 0.834,0.373 0.834,0.833c0,0.46 -0.374,0.834 -0.834,0.834c-0.46,0 -0.833,-0.374 -0.833,-0.834c0,-0.46 0.373,-0.833 0.833,-0.833Z"></path><path d="M23.333,27.5c0.46,0 0.834,0.373 0.834,0.833c0,0.46 -0.374,0.834 -0.834,0.834c-0.46,0 -0.833,-0.374 -0.833,-0.834c0,-0.46 0.373,-0.833 0.833,-0.833Z"></path></g></svg>
+                  </div>                  
+                  Self-hosted
+                </label>   
+              </div>
+          </div>
+
+          <div class="form-item">
+            <input class="col-12 lilac gap-bottom-none" type="submit" value="Create my account" id="submitForm"/>
+            <label class="font-90">By clicking "Create my account" you accept the <a href="/pages/terms-and-conditions" target="_blank">"Terms &amp; Condition"</a>.</label>
+          </div>
+
+
+        </form>
+      </div>
     </div>
-    <div class="col-md-6">
-    <form id="registerForm">
-        <div id="errors" class="alert alert-danger"></div>
-        <div class="form-group">
-            <input type="text" placeholder="Domain Name" required id="web" />.redmineup.com
-        </div>
+  </div>
+</section>
 
-        <div class="form-group">
-            <label>Please select your plan</label></br>
-            <select id="tariff">
-                <option value="small">Small (5 users) </option>
-                <option value="medium">Medium (25 Users) </option>
-                <option value="business">Business (100 Users) </option>
-                <option value="enterprise">Enterprise (Unlimited Users) </option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <input type="text" placeholder="First name" required id="firstName" />
-            <input type="text" placeholder="Last name" required id="lastName" />
-        </div>
-
-        <div class="form-group">
-            <input type="email" placeholder="Email address" required id="email" />
-        </div>
-
-        <div class="form-group">
-            <input type="text" placeholder="Telephone number" required id="contact_phone" />
-        </div>
-
-        <div class="form-group">
-            <label>What exactly we can help you with?</label></br>
-            <select id="goal">
-                <option value="project_management">Project management</option>
-                <option value="customer_support">Customer support (Helpdesk)</option>
-                <option value="crm">Sales & Marketing (CRM)</option>
-                <option value="ecommerce_management">E-commerce management (Finance & Invoicing)</option>
-                <option value="software_development">Software development (Agile)</option>
-                <option value="hr_management">Human resources management (People)</option>
-                <option value="everything">Launch a Startup (I need all of these)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>What do you prefer to use after trail?</label></br>
-            <input type="radio" name="service_type" value="cloud" required /> Cloud
-            <input type="radio" name="service_type" value="self_hosted" required /> Self-hosted
-        </div>
-
-        <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="Create my account" id="submitForm"/>
-        </div>
-    </form>
-    <div id="success">
-        <img src="check.png" class="img-responsive col-md-8 col-md-offset-* "/>
-        <h4>Well done, check your inbox</h4>
-        <span>Your instance will be ready in 1 minute. Have a nice trail :)</span>
-    </div>
-    </div>
-</div>
+<section class="trusted gray-bg">
+    {% assign light_logos = 'true' %}
+    <div class="align-center pad-top-large opacity-30">{% render_snippet 'trusted_by' %}</div> 
+</section>
+<style>
+  html {background-color: #fafafa}
+</style>
 
 <script>
 $(document).ready(function(){
-    $('#success').hide()
-    $('#errors').hide()
+    $('#errors').hide();
+    focusFix();
+    fillFormWithQueryParams();
     $('#registerForm').submit(function(event){
         event.preventDefault();
 
@@ -112,18 +154,16 @@ $(document).ready(function(){
             crossDomain: true,
             success: function(data){
                 if(data.success){
-                    $('#registerForm').hide()
-                    $('#success').show()
-                    console.log(data);
+					window.location.href = "{{'reg_thankyou' | page_url}}?domain=" + formData.name;
                 } else {
                     console.log(data.errors);
                     let errorMessage = '';
                     for(let i = 0; i < data.errors.length; i++){
-                        errorMessage += data.errors[i] + '\n';
+                        errorMessage += data.errors[i] + '</br>';
                         errorFieldSelector = '#' + data.errors[i].split(' ')[0].toLowerCase();
-                        $(errorFieldSelector).addClass('invalidField');
+                        $(errorFieldSelector).addClass('error');
                     }
-                    $('#errors').html(errorMessage);
+                    $('.message-text').html(errorMessage);
                     $('#errors').show()
                 }
             },
@@ -134,6 +174,30 @@ $(document).ready(function(){
         })
     });
 });
+function fillFormWithQueryParams(){
+	let urlString = window.location.href;
+  	let url = new URL(urlString);
+  
+  	let web = url.searchParams.get('web');
+  	let firstname = url.searchParams.get('firstname');
+  	let lastname = url.searchParams.get('lastname');
+  	let company = url.searchParams.get('company');
+  	let phone = url.searchParams.get('phone');
+  	let email = url.searchParams.get('email');
+  	let tariff = url.searchParams.get('tariff');
+  
+  	if(web) $('#web').val(web);
+  	if(firstname) $('#firstName').val(firstname);
+  	if(lastname) $('#lastName').val(lastname);
+  	if(phone) $('#contact_phone').val(phone);
+  	if(email) $('#email').val(email);
+  	if(tariff) $('#tariff').val(tariff);
+}
+  
+function focusFix(){
+	$('.error').removeClass('error');
+}
+  
 $('#registerForm').validate({
     errorPlacement: function(error,element) {
         return true;
@@ -141,8 +205,11 @@ $('#registerForm').validate({
 });
 
 $('#submitForm').prop('disabled', !$('#registerForm').valid());
-$('#registerForm input').on('change', function(){
-    $(this).removeClass('invalidField');
+$('#registerForm input, select').on('change', function(){
+    $(this).removeClass('error');
     $('#submitForm').prop('disabled', !$('#registerForm').valid());
+  	if(!$('input[name=service_type]:checked').val()) $('#submitForm').prop('disabled', true);
+  	if($('#goal').val() == "") $('#submitForm').prop('disabled', true);
 })
+
 </script>

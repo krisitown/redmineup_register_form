@@ -1,0 +1,27 @@
+<section class="gray-bg logo pad-top-small">
+  <div class="content">
+    <a href="/">{{':logo_with_name.png' | thumbnail_tag: 'size:250'}}</a>
+  </div>
+</section>
+<section class="hero gray-bg" id="main_teaser">
+  <div class="content pad-bottom-none">
+    <div class="grid-1-at-medium">
+      <div class="column">
+        <h1 class="gap-top-small headline">Almost there...</h1>
+            <h4 class="gap-top-small headline content-width-medium">Please check your Inbox for our message and click in the confirmation link.</h4>
+      </div>
+      <div class="image">
+        {{'Email-notification.png' | thumbnail_tag: 'size:300' }}
+      </div>
+    </div>
+    {% assign light_logos = 'true' %}
+    <div class="align-center pad-top-medium opacity-40">{% render_snippet 'trusted_by' %}</div>
+  </div>
+</section>  
+<style>
+  html {background-color: #fafafa}
+</style>
+<script>
+  var domainName = /[&?]domain=([^&]+)/.exec(location.search);
+  domainName = domainName ? domainName[1].replace(/"/g, '&quot;') : '';
+</script>
